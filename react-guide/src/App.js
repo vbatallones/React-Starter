@@ -29,6 +29,7 @@ const App = () => {
 		console.log(expense)
 		console.log('in app.js')
 	}
+	
 	// JavaScript XML or JSX under the hood
 	// return React.createElement(
 	// 	'div',
