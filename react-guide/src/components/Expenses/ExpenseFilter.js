@@ -4,6 +4,8 @@ import React from 'react';
 import './ExpenseFilter.css';
 
 const ExpenseFilter = (props) => {
+	// passing components to child to parent.
+	// the props is coming from the Expenses.js and using the function that has been created there.
 	const yearChangeHandler = (e) => {
 		props.onYearChangeHandler(e.target.value);
 	};
