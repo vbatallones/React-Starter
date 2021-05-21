@@ -11,8 +11,12 @@ const Expenses = (props) => {
 	// function that holds and set the information from the child component.
 	const yearFilterHandler = (selectedYear) => {
 		setEnteredYear(selectedYear);
-
 	};
+
+	const filteredExpenses = props.element.filter((year) => {
+		return year.date.getFullYear().toString() === enteredYear;
+	});
+
 	return (
 		<div>
 			<Card className="expenses">
@@ -21,7 +25,7 @@ const Expenses = (props) => {
 					selectedYear={enteredYear}
 					onYearChangeHandler={yearFilterHandler}
 				/>
-				{props.element.map((expense) => (
+				{filteredExpenses.map((expense) => (
 					<ExpenseItem
 						key={expense.id}
 						title={expense.title}
