@@ -13,9 +13,23 @@ const Expenses = (props) => {
 		setEnteredYear(selectedYear);
 	};
 
+	// filter by year on the created expenses
 	const filteredExpenses = props.element.filter((year) => {
 		return year.date.getFullYear().toString() === enteredYear;
 	});
+// setting conditional state here from the variable passed in to line 21 to up to line 31
+	let expensesContent = <p>No expenses found</p>;
+
+	if (filteredExpenses.length > 0) {
+		expensesContent = filteredExpenses.map((expense) => (
+			<ExpenseItem
+				key={expense.id}
+				title={expense.title}
+				amount={expense.amount}
+				date={expense.date}
+			/>
+		));
+	}
 
 	return (
 		<div>
@@ -25,14 +39,22 @@ const Expenses = (props) => {
 					selectedYear={enteredYear}
 					onYearChangeHandler={yearFilterHandler}
 				/>
-				{filteredExpenses.map((expense) => (
-					<ExpenseItem
-						key={expense.id}
-						title={expense.title}
-						amount={expense.amount}
-						date={expense.date}
-					/>
-				))}
+				{/* Render content conditionally. filtering by expenses. if there is no expenses render the paragraph otherwise render the ExpenseItem.js */}
+				{/* {filteredExpenses.length === 0 ? (
+					<p>No expenses found</p>
+				) : (
+					filteredExpenses.map((expense) => (
+						<ExpenseItem
+							key={expense.id}
+							title={expense.title}
+							amount={expense.amount}
+							date={expense.date}
+						/>
+					))
+				)} */}
+				
+				{/* Rendering the variable, because it has the conditional content see in line 21 to 31 */}
+				{expensesContent}
 			</Card>
 		</div>
 	);
