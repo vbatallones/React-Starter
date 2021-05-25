@@ -56,7 +56,7 @@ const Expenses = (props) => {
 				)} */}
 				
 				{/* Rendering the variable, because it has the conditional content see in line 21 to 31 */}
-			
+				{/* expensesContent */}
 		</div>
 	);
 };
